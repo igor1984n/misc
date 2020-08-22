@@ -8,17 +8,28 @@ public class Main {
         System.out.println(isPallindrome(a));
         System.out.println(isPallindrome(b));
         System.out.println(isPallindrome(c));
+        System.out.println(isSumEven(num));
     }
 
     public static boolean isPallindrome(int num) {
         String num2string = String.valueOf(num);
-        for (int i = 0; i < num2string.length() / 2; i++) {
-            for (int j = num2string.length() - i - 1; j > num2string.length() / 2; j--) {
-                System.out.println("i " + num2string.charAt(i) + "\nj " + num2string.charAt(j));
-                if (num2string.charAt(i) != num2string.charAt(j)) return false;
-                else i++;
+        int length = num2string.length();
+        if (length == 1) return false;
+        else {
+            for (int i = 0; i < length / 2; i++) {
+//                System.out.println("i " + num2string.charAt(i) + " <=> j " + num2string.charAt(length - 1 - i));
+                if (num2string.charAt(i) != num2string.charAt(length - 1 - i)) return false;
             }
+            return true;
         }
-        return true;
+    }
+
+    public static boolean isSumEven(int num) {
+        String num2string = String.valueOf(num);
+        int sum = 0;
+        for (int i = 0; i < num2string.length(); i++) {
+            sum += Integer.parseInt(String.valueOf(num2string.charAt(i)));
+        }
+        return sum % 2 == 0;
     }
 }
